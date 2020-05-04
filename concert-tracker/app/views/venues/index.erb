@@ -1,0 +1,7 @@
+<% @venues.each do |ven| %>
+  <%= ven.name %><br />
+  <%= ven.city %> <br />
+  <a href="/bags/<%=ven.id%>/edit">Edit</a>
+  <br />
+  <br />
+<% end %>

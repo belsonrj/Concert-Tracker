@@ -1,0 +1,18 @@
+<h1>Edit <%= @performer.name %></h1>
+
+<form action="/clubs/<%=@performer.id %>" method="POST">
+  <label> Band/Performer Name </label>
+  <input type="text" name="name" value="<%=@performer.name %>"> </br>
+
+  <label> Genre </label>
+  <input type="text" name="manufacturer" value="<%=@performer.genre%>"> </br>
+
+  <label> Which Venue did they perform in? </label>
+  <select name="venue_id">
+    <% current_user.venues.each do |ven| %>
+      <option value=<%=ven.id %> <%= "selected" if ven.id==@performer.venues.id %> ><%= ven.name %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Update">
+</form>

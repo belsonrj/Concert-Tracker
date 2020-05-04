@@ -1,0 +1,11 @@
+<h1>Edit <%= @venue.name %></h1>
+
+<form action="/bags/<%=@venue.id %>" method="POST">
+  <label> Venue Name </label>
+  <input type="text" name="name" value="<%=@venue.name %>"> </br>
+
+  <label> Venue Locale </label>
+  <input type="text" name="city" value="<%=@venue.city %>"> </br>
+
+  <input type="submit" value="Update">
+</form>

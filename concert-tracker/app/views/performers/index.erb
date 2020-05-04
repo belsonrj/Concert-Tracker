@@ -1,0 +1,7 @@
+<% @performers.each do |band| %>
+  <%= band.name %><br />
+  <%= band.genre %> <br />
+  <a href="/clubs/<%=band.id%>/edit">Edit</a>
+  <br />
+  <br />
+<% end %>
