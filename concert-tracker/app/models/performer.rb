@@ -1,4 +1,4 @@
 class Performer < ActiveRecord::Base
-  has_many :venues
   belongs_to :user
+  belongs_to :venues
 end
