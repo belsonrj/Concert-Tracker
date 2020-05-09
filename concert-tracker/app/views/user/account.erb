@@ -9,7 +9,14 @@
     <% if Helpers.is_logged_in?(session) %>
       <h1>Welcome, <%= Helpers.current_user(session).username %></h1>
       
-      <a href='/logout'>Log Out</a>
+      <h2>To view your collection of Performers or Venues click on the corresponding button:</h2>
+          <p><form method="POST" action='/performers'>
+             <input type="submit" value="Performer List">
+          </form></p>
+          <p><form method="POST" action='/venues'>
+             <input type="submit" value="Venue List">
+          </form></p>
+          <p><a href='/logout'>Log Out</a3></p>
     <% else %>
       You Must <a href="/">Log In</a> to View Your Concert List!
     <% end %>
