@@ -1,18 +1,13 @@
 <h1>Add a New Band/Performer</h1>
 
-<form action="/shows" method="POST">
+<form action="/performers" method="POST">
   <label> Name </label>
   <input type="text" name="name"> </br>
 
   <label> Genre </label>
   <input type="text" name="genre"> </br>
 
-  <label> Which Venue did they perform at? </label>
-  <select name="venue_id">
-    <% current_user.venues.each do |ven| %>
-      <option value=<%=ven.id %>><%= ven.name %></option>
-    <% end %>
-  </select>
+
 
   <input type="submit" value="Create">
 </form>

@@ -3,6 +3,6 @@ class Venues < ActiveRecord::Base
   belongs_to :user
   
   def self.valid_params?(params)
-    return !params[:name].empty? && !params[:city].empty?
+    return !params[:name].blank? && !params[:city].blank?
   end
 end

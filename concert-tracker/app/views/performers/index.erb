@@ -2,9 +2,9 @@
 <h2>To View Venues visited for particular performer, select Performer</h2>
 <p>You may also edit details of each Performer</p>
 <% @performers.each do |band| %>
-  <%= band.name %><br />
-  <%= band.genre %> <br />
-  <a href="/clubs/<%=band.id%>/edit">Edit</a>
+  <strong>Performer:</strong> <%= band.name %> <strong>Genre:</strong> <%= band.genre %> <br />
+  <a href="/performers/<%=band.id%>/edit">Edit</a>
+  <a href="/performers/<%=band.id%>/delete">Delete</a>
   <br />
   <br />
 <% end %>

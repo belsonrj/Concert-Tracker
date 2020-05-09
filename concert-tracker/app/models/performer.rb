@@ -3,6 +3,6 @@ class Performers < ActiveRecord::Base
   has_many :venues
   
   def self.valid_params?(params)
-    return !params[:name].empty? && !params[:genre].empty?
+    return !params[:name].blank? && !params[:genre].blank?
   end
 end
