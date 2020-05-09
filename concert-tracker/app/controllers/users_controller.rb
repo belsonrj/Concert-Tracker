@@ -50,7 +50,10 @@ class UsersController < ApplicationController
     end
   end
 
-  
+  get '/account' do
+    erb :'user/account'
+  end  
+    
   post '/account' do
     erb :'/user/account'
   end

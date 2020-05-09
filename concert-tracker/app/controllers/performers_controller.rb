@@ -42,6 +42,10 @@ class PerformersController < ApplicationController
     redirect "/performers"
   end
   
+  get '/performers/:id/delete' do
+    @performers = Performers.delete(params[:id])
+    redirect "/performers"
+  end
 
 
 end
