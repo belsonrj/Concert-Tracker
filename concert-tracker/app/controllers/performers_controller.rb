@@ -22,9 +22,7 @@ class PerformersController < ApplicationController
   post "/performers/:id" do
   
     @performers = Performers.find(params[:id])
-    unless Performers.valid_params?(params)
-      redirect "performers/#{@performers.id}/edit?error=invalid performer"
-    end
+
     @performers.update(params.select{|k|k=="name" || k=="genre"})
     redirect "/performers/#{@performers.id}"
   end
@@ -32,7 +30,7 @@ class PerformersController < ApplicationController
   get "/performers/:id" do
     
     @performers = Performers.find(params[:id])
-    erb :'performers/index'
+    redirect "/performers"
   end
 
   post "/performers" do
