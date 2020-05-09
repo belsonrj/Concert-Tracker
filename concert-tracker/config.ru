@@ -7,4 +7,5 @@ end
 use Rack::MethodOverride
 use PerformersController 
 use UsersController  
+use VenuesController 
 run ApplicationController
