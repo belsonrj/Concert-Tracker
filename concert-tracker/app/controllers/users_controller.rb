@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  get '/users/:id' do
+  get '/user/:id' do
     if !logged_in?
       redirect '/index'
     end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     user = User.find_by(:username => params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect "/account"
+      redirect "user/:id"
     else
       redirect to '/signup'
     end

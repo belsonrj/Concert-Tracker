@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>title</title>
-    <link rel="stylesheet" href="stylesheets/bootstrap.css" type="text/css">
-  </head>
+<head>
+  <link rel="stylesheet" href="https://www.w3schools.com/html/styles.css">
+</head>
   <body id="page-top">
     <% if Helpers.is_logged_in?(session) %>
       <h1>Welcome, <%= Helpers.current_user(session).username %></h1>
