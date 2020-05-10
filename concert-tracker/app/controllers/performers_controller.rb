@@ -1,7 +1,13 @@
 class PerformersController < ApplicationController
   
-  get "/performers" do
+  
+  get "/performers/index" do
     
+    @performers = Performers.all
+    erb :'performers/index'
+  end
+  
+  post '/performers/index' do
     @performers = Performers.all
     erb :'performers/index'
   end
@@ -23,7 +29,7 @@ class PerformersController < ApplicationController
   
     @performers = Performers.find(params[:id])
 
-    @performers.update(params.select{|k|k=="name" || k=="genre"})
+    @performers.update(params.select{|k|k=="name" || k=="genre" || k=="times_seen"})
     redirect "/performers/#{@performers.id}"
   end
 
@@ -32,7 +38,8 @@ class PerformersController < ApplicationController
     @performers = Performers.find(params[:id])
     redirect "/performers"
   end
-
+  
+  
   post "/performers" do
    
     unless Performers.valid_params?(params)
