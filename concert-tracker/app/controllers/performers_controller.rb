@@ -24,6 +24,10 @@ class PerformersController < ApplicationController
     @performers = Performers.find(params[:id])
     erb :'performers/edit'
   end
+  
+  get '/performers/:id/venues' do
+    erb :'performers/venues'
+  end
 
   post "/performers/:id" do
   

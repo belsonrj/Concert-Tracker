@@ -23,6 +23,10 @@ class VenuesController < ApplicationController
     @venues = Venues.find(params[:id])
     erb :'venues/edit'
   end
+  
+  get '/venues/:id/performers' do
+    erb :'venues/performers'
+  end
 
   post "/venues/:id" do
   
