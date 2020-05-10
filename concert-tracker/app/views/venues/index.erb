@@ -12,8 +12,8 @@
 
 <% @venues.each do |ven| %>
   <strong>Venue:</strong> <%= ven.name %> <strong>Locale:</strong> <%= ven.city %><br />
-  <a href="/performers/<%=ven.id%>/edit">Edit</a>
-  <a href="/performers/<%=ven.id%>/delete">Delete</a>
+  <a href="/venues/<%=ven.id%>/edit">Edit</a>
+  <a href="/venues/<%=ven.id%>/delete">Delete</a>
   <br />
   <br />
 <% end %>

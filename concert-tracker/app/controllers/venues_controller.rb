@@ -7,7 +7,7 @@ class VenuesController < ApplicationController
   end
   
   post '/venues/index' do
-    @venues = Venue.all
+    @venues = Venues.all
     erb :'venues/index'
   end
 
