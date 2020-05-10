@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   end  
     
   post '/account' do
-    erb :'/user/account'
+    erb :'user/account'
   end
 
   get '/logout' do
