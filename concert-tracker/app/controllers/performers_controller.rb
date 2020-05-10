@@ -36,7 +36,7 @@ class PerformersController < ApplicationController
   get "/performers/:id" do
     
     @performers = Performers.find(params[:id])
-    redirect "/performers"
+    redirect "/performers/index"
   end
   
   
@@ -46,12 +46,12 @@ class PerformersController < ApplicationController
       redirect "/performers/new?error=invalid performer"
     end
     Performers.create(params)
-    redirect "/performers"
+    redirect "/performers/index"
   end
   
   get '/performers/:id/delete' do
     @performers = Performers.delete(params[:id])
-    redirect "/performers"
+    redirect "/performers/index"
   end
 
 

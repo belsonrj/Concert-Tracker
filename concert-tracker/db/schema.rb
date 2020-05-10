@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20200504040209) do
 
   create_table "performers", force: :cascade do |t|
-    t.string "name"
-    t.string "genre"
+    t.string  "name"
+    t.string  "genre"
     t.integer "times_seen"
   end
 

@@ -1,13 +1,13 @@
 <h1>Your List of Live Performances</h1>
-<h2>To View Venues visited for particular performer, select Performer</h2>
-<p>You may also edit details of each Performer</p>
+
+<h2>You may view Venues associated with a Performer, as well as, edit details of each Performer</h2>
 
 <p><form method="GET" action='/performers/new'>
     <input type="submit" value="Add Performer">
 </form></p>
 
 <% @performers.each do |band| %>
-  <strong>Performer:</strong> <%= band.name %> <strong>Genre:</strong> <%= band.genre %> <br />
+  <strong>Performer:</strong> <%= band.name %> <strong>Genre:</strong> <%= band.genre %> <strong>Times Seen:</strong> <%= band.times_seen %> <br />
   <a href="/performers/<%=band.id%>/edit">Edit</a>
   <a href="/performers/<%=band.id%>/delete">Delete</a>
   <br />
