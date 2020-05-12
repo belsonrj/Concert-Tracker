@@ -6,6 +6,10 @@
 
   <label> City/Locale </label>
   <input type="text" name="city"> </br>
+  
+  <% @performers.each do |per| %>
+  <input type="checkbox" name="performers[performer_id][]" id="<%= per.id %>" value="<%= per.id %>"><%= per.name %><br>
+<% end %>
 
   <input type="submit" value="Create">
 </form>

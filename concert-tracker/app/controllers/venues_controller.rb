@@ -12,7 +12,7 @@ class VenuesController < ApplicationController
   end
 
   get "/venues/new" do
-    
+    @performers = Performers.all
     @error_message = params[:error]
     erb :'venues/new'
   end
