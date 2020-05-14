@@ -1,12 +1,12 @@
-  <%= @venue.name %><br />
-  <%= @venue.city %> <br />
+  <%= @venues.name %><br />
+  <%= @venues.city %> <br />
 
   <h2>Performers</h2>
   <ul>
-  <% @venue.performers.each do |band| %>
-    <li><a href="/clubs/<%=band.id%>"><%= band.name %></a></li>
+  <% @venues.performers.each do |band| %>
+    <li><a href="/performers/<%=band.id%>"><%= band.name %></a></li>
   <% end%>
   </ul>
-  <a href="/bags/<%=@venue.id%>/edit">Edit</a>
+  <a href="/venues/<%=@venues.id%>/edit">Edit</a>
   <br />
   <br />

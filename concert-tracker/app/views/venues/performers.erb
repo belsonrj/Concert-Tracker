@@ -1,1 +1,13 @@
 <h1>Performers you've seen at this Venue:</h1>
+  <%= @venues.name %><br />
+  <%= @venues.city %> <br />
+
+  <h2>Performers</h2>
+  <ul>
+  <% @venues.performers.each do |per| %>
+    <strong>Name:</strong> <%= per.name %> <strong>Genre:</strong> <%= per.genre %><br />
+  <% end%>
+  </ul>
+  <a href="/venues/<%=@venues.id%>/edit">Edit</a>
+  <br />
+  <br />
