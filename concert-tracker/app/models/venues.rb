@@ -1,6 +1,6 @@
 class Venues < ActiveRecord::Base
-  has_many :performer_venue
-  has_many :performers, through: :performer_venue
+  has_many :performer_venues
+  has_many :performers, through: :performer_venues
   belongs_to :user
   accepts_nested_attributes_for :performers
   
