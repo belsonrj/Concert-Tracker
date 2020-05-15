@@ -2,60 +2,57 @@ class VenuesController < ApplicationController
    
   get "/venues/index" do
     
-    @venues = Venues.all
+    @venues = Venue.all
     erb :'venues/index'
   end
   
   post '/venues/index' do
-    @venues = Venues.all
+    @venues = Venue.all
     erb :'venues/index'
   end
 
   get "/venues/new" do
-    @performers = Performers.all
-    @error_message = params[:error]
+    @performers = Performer.all
     erb :'venues/new'
   end
 
   get "/venues/:id/edit" do
-    
-    @error_message = params[:error]
-    @venues = Venues.find(params[:id])
-    erb :'venues/edit'
+    @venues = Venue.find(params[:id])
+    erb :'/venues/edit'
   end
   
   get '/venues/:id/performers' do
-    @venues = Venues.find(params[:id])
-    @performer_venues = PerformerVenue.find(params[:performers_id])
+    @venues = Venue.find(params[:id])
     erb :'venues/performers'
   end
-
-  post "/venues/:id" do
   
-    @venues = Venues.find(params[:venue])
-
+  post '/venues/:id' do
+    @venues = Venue.find(params[:id])
     @venues.update(params.select{|k|k=="name" || k=="city"})
-    redirect "/venues/#{@venues.id}"
+    redirect to "venues/#{@venues.id}"
   end
 
   get "/venues/:id" do
-    
-    @venues = Venues.find(params[:id])
+    @venues = Venue.find(params[:id])
     redirect "/venues/index"
   end
   
   post "/venues" do
-   
-    unless Venues.valid_params?(params)
+    unless Venue.valid_params?(params)
       redirect "/venues/new?error=invalid performer"
     end
-    @venues = Venues.create(:name => params["name"], :city => params["city"])
-    redirect "/venues/#{@venues.id}"
+    @venues = Venue.create(:name => params["name"], :city => params["city"])
+#    @performers = Performer.create
+    if !params["name"].empty?
+      Performer.create(params[:name => "name"][:genre => "genre"])
+    end
+    @venues.save
+    redirect "/venues/index"
+#    redirect "/venues/#{@venues.id}"
   end
 
-  
   get '/venues/:id/delete' do
-    @venues = Venues.delete(params[:id])
+    @venues = Venue.delete(params[:id])
     redirect "/venues/index"
   end
 end

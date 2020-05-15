@@ -1,8 +1,8 @@
-class Venues < ActiveRecord::Base
+class Venue < ActiveRecord::Base
   has_many :performer_venues
   has_many :performers, through: :performer_venues
   belongs_to :user
-  accepts_nested_attributes_for :performers
+  #accepts_nested_attributes_for :performers
   
   def self.valid_params?(params)
     return !params[:name].blank? && !params[:city].blank?

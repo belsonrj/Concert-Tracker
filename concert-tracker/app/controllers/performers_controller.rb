@@ -3,12 +3,12 @@ class PerformersController < ApplicationController
   
   get "/performers/index" do
     
-    @performers = Performers.all
+    @performers = Performer.all
     erb :'performers/index'
   end
   
   post '/performers/index' do
-    @performers = Performers.all
+    @performers = Performer.all
     erb :'performers/index'
   end
 
@@ -21,7 +21,7 @@ class PerformersController < ApplicationController
   get "/performers/:id/edit" do
     
     @error_message = params[:error]
-    @performers = Performers.find(params[:id])
+    @performers = Performer.find(params[:id])
     erb :'performers/edit'
   end
   
@@ -31,7 +31,7 @@ class PerformersController < ApplicationController
 
   post "/performers/:id" do
   
-    @performers = Performers.find(params[:id])
+    @performers = Performer.find(params[:id])
 
     @performers.update(params.select{|k|k=="name" || k=="genre" || k=="times_seen"})
     redirect "/performers/#{@performers.id}"
@@ -39,22 +39,22 @@ class PerformersController < ApplicationController
 
   get "/performers/:id" do
     
-    @performers = Performers.find(params[:id])
+    @performers = Performer.find(params[:id])
     redirect "/performers/index"
   end
   
   
   post "/performers" do
    
-    unless Performers.valid_params?(params)
+    unless Performer.valid_params?(params)
       redirect "/performers/new?error=invalid performer"
     end
-    Performers.create(params)
+    Performer.create(params)
     redirect "/performers/index"
   end
   
   get '/performers/:id/delete' do
-    @performers = Performers.delete(params[:id])
+    @performers = Performer.delete(params[:id])
     redirect "/performers/index"
   end
 

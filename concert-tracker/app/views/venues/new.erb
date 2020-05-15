@@ -8,8 +8,18 @@
   <input type="text" name="city"> </br>
   
   <% @performers.each do |per| %>
-  <input type="checkbox" name="performer_venues[performer_id][]" performer_id="<%= per.id %>" value="<%= per.id %>"><%= per.name %><br>
+  <input type="checkbox" name="performers" id="<%= per.id %>" value="<%= per.id %>"><%= per.name %><br>
 <% end %>
 
-  <input type="submit" value="Create">
+  <h3>New Performer</h3>
+  <label>Performer Name: </label>
+  <br>
+  <input type="text" name="performer[name]" id="performer_name"></input>
+  <br>
+  <label>Performer Genre: </label>
+  <br>
+  <input type="text" name="performer[genre]" id="performer_genre"></input>
+  <br><br>
+ 
+  <input type="submit" value="Create Venue">
 </form>
