@@ -44,7 +44,7 @@ class VenuesController < ApplicationController
     @venues = Venue.create(:name => params["name"], :city => params["city"])
 #    @performers = Performer.create
     if !params["name"].empty?
-      Performer.create(params[:name => "name"][:genre => "genre"])
+      Venue.performers << Performer.create(:name => ["name"], :genre => ["genre"])
     end
     @venues.save
     redirect "/venues/index"
