@@ -26,6 +26,7 @@ class VenuesController < ApplicationController
   
   get '/venues/:id/performers' do
     @venues = Venues.find(params[:id])
+    @performer_venues = PerformerVenue.find(params[:performers_id])
     erb :'venues/performers'
   end
 
