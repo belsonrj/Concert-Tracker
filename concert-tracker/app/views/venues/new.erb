@@ -2,13 +2,13 @@
 
 <form action="/venues" method="POST">
   <label> Venue Name </label>
-  <input type="text" name="name"> </br>
+  <input type="text" name="performer[name]"> </br>
 
   <label> City/Locale </label>
-  <input type="text" name="city"> </br>
+  <input type="text" name="performer[city]"> </br>
   
   <% @performers.each do |per| %>
-  <input type="checkbox" name="performers" id="<%= per.id %>" value="<%= per.id %>"><%= per.name %><br>
+  <input type="checkbox" name="venue[performer][]" id="<%= per.id %>" value="<%= per.id %>"><%= per.name %><br>
 <% end %>
 
   <h3>New Performer</h3>

@@ -38,13 +38,25 @@ class VenuesController < ApplicationController
   end
   
   post "/venues" do
-    unless Venue.valid_params?(params)
-      redirect "/venues/new?error=invalid performer"
-    end
     @venues = Venue.create(:name => params["name"], :city => params["city"])
-#    @performers = Performer.create
+    
+#    artist_entry = params[:performer]
+#    if Performer.find_by(:name => artist_entry)
+#      performers = Performer.find_by(:name => artist_entry)
+#    else
+#      performers = Performer.create(:name => artist_entry)
+#    end
+    
+#    @venues.performers = []
     if !params["name"].empty?
-      Venue.performers << Performer.create(:name => ["name"], :genre => ["genre"])
+      @venues.performers << Performer.create(:name => ["name"], :genre => ["genre"])
+    else
+      
+      
+    performer_selection = params[:venue][:performers]
+    performer_selection.each do |per|
+      @venues.performers << Performer.find(performer)
+    end
     end
     @venues.save
     redirect "/venues/index"
