@@ -6,7 +6,6 @@ class Venue < ActiveRecord::Base
   
   def self.performers
     @performers = []
-    #@performers << performer
   end
   
   def self.valid_params?(params)
