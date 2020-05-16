@@ -4,9 +4,9 @@ class Venue < ActiveRecord::Base
   belongs_to :user
   #accepts_nested_attributes_for :performers
   
-  def performers
+  def self.performers
     @performers = []
-    @performers << self
+    #@performers << performer
   end
   
   def self.valid_params?(params)

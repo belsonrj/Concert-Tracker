@@ -4,7 +4,7 @@
 
   <h2>Performers:</h2>
   <ul>
-  <% @venues.performer_ids.each do |per| %>
+  <% @venues.performers.each do |per| %>
     <strong>Name:</strong> <%= per.name %> <strong>Genre:</strong> <%= per.genre %><br />
   <% end%>
   </ul>

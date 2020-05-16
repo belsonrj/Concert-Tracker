@@ -38,7 +38,7 @@ class VenuesController < ApplicationController
   end
   
   post "/venues" do
-    @venues = Venue.create(:name => params["name"], :city => params["city"])
+    @venues = Venue.create(:name => params["venue_name"], :city => params["city"])
     
 #    artist_entry = params[:performer]
 #    if Performer.find_by(:name => artist_entry)
@@ -47,18 +47,16 @@ class VenuesController < ApplicationController
 #      performers = Performer.create(:name => artist_entry)
 #    end
     
-#    @venues.performers = []
-    if !params["name"].empty?
-      @venues.performers << Performer.create(:name => ["name"], :genre => ["genre"])
+    if !params.empty?
+      @venues.performers << Performer.create(:name => params["performer_name"], :genre => params["genre"])
     else
-      
       
     performer_selection = params[:venue][:performers]
     performer_selection.each do |per|
-      @venues.performers << Performer.find(performer)
+      @venues.performers << Performer.find(per)
     end
     end
-    @venues.save
+    @venues
     redirect "/venues/index"
 #    redirect "/venues/#{@venues.id}"
   end
