@@ -4,10 +4,13 @@
   <%= @venues.city %> <br />
 
   <h2>Performers:</h2>
+  <ol>
   <ul>
   <% @venues.performers.each do |per| %>
-    <strong>Name:</strong> <%= per.name %> <strong>Genre:</strong> <%= per.genre %><br />
+  <li><strong>Name:</strong> <%= per.name %> <strong>Genre:</strong> <%= per.genre %><br />
     <a href="/venues/<%=@venues.id%>/<%=per.id%>">Remove</a>
+  </li>
+  </ol>
   <% end%>
   </ul>
   <a href="/venues/index">Venue Index</a>

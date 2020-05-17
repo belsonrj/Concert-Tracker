@@ -5,11 +5,14 @@
   <strong>Times Seen:</strong> <%= @performers.times_seen %> <br />
 
   <h2>Venues:</h2>
+  <ol>
   <ul>
   <% @performers.venues.each do |ven| %>
-    <strong>Name:</strong> <%= ven.name %> <strong>Locale:</strong> <%= ven.city %><br />
+  <li><strong>Name:</strong> <%= ven.name %> <strong>Locale:</strong> <%= ven.city %><br />
     <a href="/performers/<%=@performers.id%>/<%=ven.id%>">Remove</a>
       <br />
+  </li>
+  </ol>
   <% end%>
   </ul>
     <br />
