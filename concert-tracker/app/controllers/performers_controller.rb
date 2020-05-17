@@ -26,6 +26,7 @@ class PerformersController < ApplicationController
   end
   
   get '/performers/:id/venues' do
+    @performers = Performer.find(params[:id])
     erb :'performers/venues'
   end
 
@@ -56,7 +57,7 @@ class PerformersController < ApplicationController
       @performers.venues << Venue.create(name: params["venue"]["name"], city: params["venue"]["city"])
     end
       
-    @venues.save
+    @performers.save
 
     redirect "/performers/#{@performers.id}"
   end

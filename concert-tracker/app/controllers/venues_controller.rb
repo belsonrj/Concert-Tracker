@@ -18,6 +18,7 @@ class VenuesController < ApplicationController
 
   get "/venues/:id/edit" do
     @venues = Venue.find(params[:id])
+    @performers = Performer.all
     erb :'/venues/edit'
   end
   
@@ -28,7 +29,14 @@ class VenuesController < ApplicationController
   
   post '/venues/:id' do
     @venues = Venue.find(params[:id])
-    @venues.update(params.select{|k|k=="name" || k=="city"})
+    @venues.update(params[:venue])
+#    @venues.update(params.select{|k|k=="name" || k=="city"})
+    if !params["performer"]["name"].empty?
+      @venues.performers << Performer.create(name: params["performer"]["name"], genre: params["performer"]["genre"])
+    end
+    
+    @venues.save
+    
     redirect to "venues/#{@venues.id}"
   end
 
@@ -38,20 +46,14 @@ class VenuesController < ApplicationController
   end
   
   post "/venues" do
-#    @venues = Venue.create(:name => params["venue_name"], :city => params["city"])
     @venues = Venue.create(params[:venue])
     if !params["performer"]["name"].empty?
       @venues.performers << Performer.create(name: params["performer"]["name"], genre: params["performer"]["genre"])
     end
       
-#    performer_selection = params[""]
-#    performer_selection.each do |per|
-#      @venues.performers << Performer.find(per)
-#    end
-#    end
     @venues.save
-#    redirect "/venues/index"
-    redirect "/venues/#{@venues.id}"
+
+    redirect "/venues/index"
   end
 
   get '/venues/:id/delete' do

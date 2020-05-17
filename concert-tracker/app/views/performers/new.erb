@@ -2,16 +2,13 @@
 
 <form action="/performers" method="POST">
   <label> Name </label>
-  <input type="text" name="name"> </br>
+  <input type="text" name="performer[name]"> </br>
 
   <label> Genre </label>
-  <input type="text" name="genre"> </br>
+  <input type="text" name="performer[genre]"> </br>
   
   <label> Times Seen </label>
-  <input type="integer" name="times_seen"> </br>
-
-  <input type="submit" value="Create">
-</form>
+  <input type="integer" name="performer[times_seen]"> </br>
 
 <% @venues.each do |ven| %>
   <input type="checkbox" name="performer[venue_ids][]" id="<%= ven.id %>" value="<%= ven.id %>"><%= ven.name %><br>
@@ -27,5 +24,5 @@
   <input type="text" name="venue[city]" id="city"></input>
   <br><br>
  
-  <input type="submit" value="Create Venue">
+  <input type="submit" value="Create">
 </form>
