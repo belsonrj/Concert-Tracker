@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" href="https://www.w3schools.com/html/styles.css">
+<head lang="en">
+    <meta charset="utf-8">
+
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT5qXuHMLjuCOAyWUrJsdMJMg7lqgU_1LP2lMba9l3LG9VQaRgN&usqp=CAU" height="200" width="900" />
 </head>
-  <body id="page-top">
+
+   <body style="background-color:rgb(47, 79, 79);">
+    <script src="js/scripts.js"></script>
+    
     <% if Helpers.is_logged_in?(session) %>
-      <h1>Welcome, <%= Helpers.current_user(session).username %></h1>
+      <h1>Welcome, <%= Helpers.current_user(session).username %>!</h1>
       
       <h2>To view your collection of Performers or Venues click on the corresponding button:</h2>
           <p><form method="POST" action='/performers/index'>

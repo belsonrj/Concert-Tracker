@@ -1,6 +1,8 @@
 <head>
   <link rel="stylesheet" href="https://www.w3schools.com/html/styles.css">
 </head>
+
+<body style="background-color:rgb(47, 79, 79);">
 <h1>Edit <%= @performers.name %></h1>
 
 <form action="/performers/<%=@performers.id %>" method="POST">
@@ -31,3 +33,4 @@
 
   <input type="submit" value="Update">
 </form>
+</body>

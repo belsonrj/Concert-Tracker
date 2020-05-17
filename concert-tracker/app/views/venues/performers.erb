@@ -1,3 +1,4 @@
+<body style="background-color:rgb(47, 79, 79);">
 <h1>Performers you've seen at this Venue:</h1>
   <%= @venues.name %><br />
   <%= @venues.city %> <br />
@@ -8,7 +9,8 @@
     <strong>Name:</strong> <%= per.name %> <strong>Genre:</strong> <%= per.genre %><br />
   <% end%>
   </ul>
-  <a href="/venues/index">Venues</a>
+  <a href="/venues/index">Venue Index</a>
   <a href="/venues/<%=@venues.id%>/edit">Edit</a>
   <br />
   <br />
+  </body>
