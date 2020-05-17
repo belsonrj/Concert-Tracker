@@ -7,6 +7,7 @@
   <ul>
   <% @venues.performers.each do |per| %>
     <strong>Name:</strong> <%= per.name %> <strong>Genre:</strong> <%= per.genre %><br />
+    <a href="/venues/<%=@venues.id%>/<%=per.id%>">Remove</a>
   <% end%>
   </ul>
   <a href="/venues/index">Venue Index</a>

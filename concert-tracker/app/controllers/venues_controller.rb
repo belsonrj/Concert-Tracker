@@ -1,4 +1,10 @@
 class VenuesController < ApplicationController
+  
+  def delete_performer_venue_association(performer_id, venue_id)
+    venue = Venue.find(venue_id)
+    performer = venue.performers.find(performer_id)
+    venue.performers.delete(performer) if performer
+  end
    
   get "/venues/index" do
     
@@ -53,6 +59,13 @@ class VenuesController < ApplicationController
       
     @venues.save
 
+    redirect "/venues/index"
+  end
+  
+  get '/venues/:id/:performer_id' do
+    venue = Venue.find(params[:id])
+    performer = venue.performers.find(params[:performer_id])
+    venue.performers.delete(performer) if performer
     redirect "/venues/index"
   end
 

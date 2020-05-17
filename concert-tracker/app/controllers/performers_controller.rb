@@ -66,6 +66,13 @@ class PerformersController < ApplicationController
     redirect "/performers/#{@performers.id}"
   end
   
+  get '/performers/:id/:venue_id' do
+    performer = Performer.find(params[:id])
+    venue = performer.venues.find(params[:venue_id])
+    performer.venues.delete(venue) if venue
+    redirect "/performers/index"
+  end
+  
   get '/performers/:id/delete' do
     @performers = Performer.delete(params[:id])
     redirect "/performers/index"

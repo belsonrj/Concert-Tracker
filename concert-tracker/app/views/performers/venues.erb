@@ -8,6 +8,7 @@
   <ul>
   <% @performers.venues.each do |ven| %>
     <strong>Name:</strong> <%= ven.name %> <strong>Locale:</strong> <%= ven.city %><br />
+    <a href="/venues/<%=@venues.id%>/<%=ven.id%>">Remove</a>
   <% end%>
   </ul>
   <a href="/performers/index">Performer Index</a>
