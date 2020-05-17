@@ -13,7 +13,7 @@ class PerformersController < ApplicationController
   end
 
   get "/performers/new" do
-    
+    @venues = Venue.all
     @error_message = params[:error]
     erb :'performers/new'
   end
@@ -46,11 +46,19 @@ class PerformersController < ApplicationController
   
   post "/performers" do
    
-    unless Performer.valid_params?(params)
-      redirect "/performers/new?error=invalid performer"
+#    unless Performer.valid_params?(params)
+#      redirect "/performers/new?error=invalid performer"
+#    end
+#    Performer.create(params)
+
+    @performers = Performer.create(params[:performer])
+    if !params["venue"]["name"].empty?
+      @performers.venues << Venue.create(name: params["venue"]["name"], city: params["venue"]["city"])
     end
-    Performer.create(params)
-    redirect "/performers/index"
+      
+    @venues.save
+
+    redirect "/performers/#{@performers.id}"
   end
   
   get '/performers/:id/delete' do

@@ -12,3 +12,20 @@
 
   <input type="submit" value="Create">
 </form>
+
+<% @venues.each do |ven| %>
+  <input type="checkbox" name="performer[venue_ids][]" id="<%= ven.id %>" value="<%= ven.id %>"><%= ven.name %><br>
+<% end %>
+
+  <h3>Create New Venue:</h3>
+  <label>Venue Name: </label>
+  <br>
+  <input type="text" name="venue[name]" id="name"></input>
+  <br>
+  <label>Venue Locale: </label>
+  <br>
+  <input type="text" name="venue[city]" id="city"></input>
+  <br><br>
+ 
+  <input type="submit" value="Create Venue">
+</form>
