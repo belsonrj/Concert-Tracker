@@ -19,7 +19,7 @@ class PerformersController < ApplicationController
   end
 
   get "/performers/:id/edit" do
-    
+    @venues = Venue.all
     @error_message = params[:error]
     @performers = Performer.find(params[:id])
     erb :'performers/edit'
@@ -31,10 +31,14 @@ class PerformersController < ApplicationController
   end
 
   post "/performers/:id" do
-  
     @performers = Performer.find(params[:id])
+    @performers.update(params[:performer])
 
-    @performers.update(params.select{|k|k=="name" || k=="genre" || k=="times_seen"})
+    if !params["venue"]["name"].empty?
+      @performers.venues << Venue.create(name: params["venue"]["name"], city: params["venue"]["city"])
+    end
+    
+    @performers.save
     redirect "/performers/#{@performers.id}"
   end
 
