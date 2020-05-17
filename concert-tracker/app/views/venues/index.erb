@@ -1,6 +1,8 @@
 <head>
   <link rel="stylesheet" href="https://www.w3schools.com/html/styles.css">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT3moY0_6nsitNV3NIk0XsSPVicpKfwdkVG87opOL30__dL8PaK&usqp=CAU" height="200" width="800" />
 </head>
+
 <h1>Your List of Venues Visited</h1>
 
 <h2>You may view Performers associated with a Venue, as well as, edit details of each Venue</h2>
@@ -20,11 +22,14 @@ strong {
     <input type="submit" value="Add Venue">
 </form></p>
 
+<ol start="1">
 <% @venues.each do |ven| %>
-  <strong>Venue:</strong> <%= ven.name %> <strong>Locale:</strong> <%= ven.city %><br />
+  <li><strong>Venue:</strong> <%= ven.name %> <strong>Locale:</strong> <%= ven.city %><br />
   <a href="/venues/<%=ven.id%>/performers">Performers</a>
   <a href="/venues/<%=ven.id%>/edit">Edit</a>
   <a href="/venues/<%=ven.id%>/delete">Delete</a>
+  </li>
+</ol>
   <br />
   <br />
 <% end %>
