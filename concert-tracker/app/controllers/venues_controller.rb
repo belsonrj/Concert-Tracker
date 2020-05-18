@@ -29,6 +29,7 @@ class VenuesController < ApplicationController
   end
 
   get "/venues/:id/edit" do
+    @user = current_user
     @venues = Venue.find(params[:id])
     @performers = Performer.all
     erb :'/venues/edit'

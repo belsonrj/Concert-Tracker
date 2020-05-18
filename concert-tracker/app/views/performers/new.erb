@@ -11,7 +11,7 @@
   <label> Times Seen </label>
   <input type="integer" name="performer[times_seen]"> </br>
 
-<% @venues.each do |ven| %>
+<% @user.venues.each do |ven| %>
   <input type="checkbox" name="performer[venue_ids][]" id="<%= ven.id %>" value="<%= ven.id %>"><%= ven.name %><br>
 <% end %>
 

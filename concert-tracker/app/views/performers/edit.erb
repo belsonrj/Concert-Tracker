@@ -17,7 +17,7 @@
   
   <h2>Add Venue:</h2>
   
-<% @venues.each do |ven| %>
+<% @user.venues.each do |ven| %>
   <input type="checkbox" name="performer[venue_ids][]" id="<%= ven.id %>" value="<%= ven.id %>"><%= ven.name %><br>
 <% end %>
 

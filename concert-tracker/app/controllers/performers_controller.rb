@@ -24,19 +24,19 @@ class PerformersController < ApplicationController
   
   post '/performers/:id/index' do
     @user = current_user
-#    @user = User.find(params[:id])
     @performers = Performer.all
     erb :'performers/index'
   end
 
   get "/performers/new" do
-    @user = session[:user_id]
+    @user = current_user
     @venues = Venue.all
     @error_message = params[:error]
     erb :'performers/new'
   end
 
   get "/performers/:id/edit" do
+    @user = current_user
     @venues = Venue.all
     @error_message = params[:error]
     @performers = Performer.find(params[:id])
@@ -49,11 +49,13 @@ class PerformersController < ApplicationController
   end
 
   post "/performers/:id" do
+    @user = current_user
     @performers = Performer.find(params[:id])
     @performers.update(params[:performer])
 
     if !params["venue"]["name"].empty?
       @performers.venues << Venue.create(name: params["venue"]["name"], city: params["venue"]["city"])
+#      @user.performers.venues << @performers
     end
     
     @performers.save

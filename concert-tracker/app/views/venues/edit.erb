@@ -10,7 +10,7 @@
   
   <h2>Add Performer:</h2>
   
-<% @performers.each do |per| %>
+<% @user.performers.each do |per| %>
   <input type="checkbox" name="venue[performer_ids][]" id="<%= per.id %>" value="<%= per.id %>"><%= per.name %><br>
 <% end %>
 
