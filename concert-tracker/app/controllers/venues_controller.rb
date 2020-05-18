@@ -69,7 +69,7 @@ class VenuesController < ApplicationController
     redirect "/venues/index"
   end
 
-  get '/venues/:id/delete' do
+  get '/venue/:id/delete' do
     @venues = Venue.delete(params[:id])
     redirect "/venues/index"
   end

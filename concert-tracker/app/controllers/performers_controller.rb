@@ -2,7 +2,7 @@ class PerformersController < ApplicationController
   
   
   get "/performers/index" do
-    
+#    @user = User.find(session[:user_id])
     @performers = Performer.all
     erb :'performers/index'
   end
@@ -73,7 +73,7 @@ class PerformersController < ApplicationController
     redirect "/performers/index"
   end
   
-  get '/performers/:id/delete' do
+  get '/performer/:id/delete' do
     @performers = Performer.delete(params[:id])
     redirect "/performers/index"
   end

@@ -1,8 +1,7 @@
 class Venue < ActiveRecord::Base
+  belongs_to :user
   has_many :performer_venues
   has_many :performers, through: :performer_venues
-  belongs_to :user
-  #accepts_nested_attributes_for :performers
   
   def self.performers
     @performers = []

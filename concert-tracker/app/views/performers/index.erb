@@ -14,7 +14,7 @@ strong {
 }
 </style>
 
-<p><form method="GET" action='/account'>
+<p><form method="GET" action='/users/account'>
     <input type="submit" value="Home">
 </form></p>
 
@@ -27,7 +27,7 @@ strong {
   <li><strong>Performer:</strong> <%= band.name %> <strong>Genre:</strong> <%= band.genre %> <strong>Times Seen:</strong> <%= band.times_seen %> <br />
   <a href="/performers/<%=band.id%>/venues">Venues</a>
   <a href="/performers/<%=band.id%>/edit">Edit</a>
-  <a href="/performers/<%=band.id%>/delete">Delete</a>
+  <a href="/performer/<%=band.id%>/delete">Delete</a>
   </li>
 </ol>
   <br />
