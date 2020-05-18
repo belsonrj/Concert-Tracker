@@ -13,7 +13,7 @@
       <h1>Welcome, <%= Helpers.current_user(session).username %>!</h1>
       
       <h2>To view your collection of Performers or Venues click on the corresponding button:</h2>
-          <p><form method="POST" action='/performers/index'>
+          <p><form method="POST" action='/performers/<%= @user.id %>/index'>
              <input type="submit" value="Performer List">
           </form></p>
           <p><form method="POST" action='/venues/index'>

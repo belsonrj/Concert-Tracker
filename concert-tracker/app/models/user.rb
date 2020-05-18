@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
   has_many :performers
   has_many :venues
   has_many :performer_venues
+  
+  def self.performers
+    @performers = []
+  end
 end
