@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   def self.performers
     @performers = []
   end
+  
+  def self.venues
+    @venues = []
+  end
 end

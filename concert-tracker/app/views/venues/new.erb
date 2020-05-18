@@ -8,7 +8,7 @@
   <label> City/Locale </label>
   <input type="text" name="venue[city]"> </br>
   
-  <% @performers.each do |per| %>
+  <% @user.performers.each do |per| %>
   <input type="checkbox" name="venue[performer_ids][]" id="<%= per.id %>" value="<%= per.id %>"><%= per.name %><br>
 <% end %>
 

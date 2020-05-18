@@ -5,19 +5,25 @@ class VenuesController < ApplicationController
     performer = venue.performers.find(performer_id)
     venue.performers.delete(performer) if performer
   end
+  
+  def current_user
+    User.find(session[:user_id])
+  end
    
   get "/venues/index" do
-    
+    @user = current_user
     @venues = Venue.all
     erb :'venues/index'
   end
   
   post '/venues/index' do
+    @user = current_user
     @venues = Venue.all
     erb :'venues/index'
   end
 
   get "/venues/new" do
+    @user = current_user
     @performers = Performer.all
     erb :'venues/new'
   end
@@ -52,11 +58,12 @@ class VenuesController < ApplicationController
   end
   
   post "/venues" do
+    @user = current_user
     @venues = Venue.create(params[:venue])
     if !params["performer"]["name"].empty?
       @venues.performers << Performer.create(name: params["performer"]["name"], genre: params["performer"]["genre"])
     end
-      
+    @user.venues << @venues  
     @venues.save
 
     redirect "/venues/index"

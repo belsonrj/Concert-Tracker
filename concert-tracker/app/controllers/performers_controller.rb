@@ -1,5 +1,9 @@
 class PerformersController < ApplicationController
   
+  def current_user
+    User.find(session[:user_id])
+  end
+  
   get '/performers/:id/index' do
 
     @performers = Performer.all
@@ -13,19 +17,20 @@ class PerformersController < ApplicationController
   
   
   get "/performers/index" do
-    @user = User.find(session[:user_id])
+    @user = current_user
     @performers = Performer.all
     erb :'performers/index'
   end
   
   post '/performers/:id/index' do
-    @user = User.find(params[:id])
+    @user = current_user
+#    @user = User.find(params[:id])
     @performers = Performer.all
     erb :'performers/index'
   end
 
   get "/performers/new" do
-    @user = 
+    @user = session[:user_id]
     @venues = Venue.all
     @error_message = params[:error]
     erb :'performers/new'
@@ -56,14 +61,14 @@ class PerformersController < ApplicationController
   end
 
   get "/performers/:id" do
-    
     @performers = Performer.find(params[:id])
+
     redirect "/performers/index"
   end
   
   
-  post "/performers/:id" do
-    @user = User.find(params[:id])
+  post "/performers" do
+    @user = current_user
     @performers = Performer.create(params[:performer])
     if !params["venue"]["name"].empty?
       @performers.venues << Venue.create(name: params["venue"]["name"], city: params["venue"]["city"])

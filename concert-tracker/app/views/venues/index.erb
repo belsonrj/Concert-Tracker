@@ -24,7 +24,7 @@ strong {
 </form></p>
 
 <ol start="1">
-<% @venues.each do |ven| %>
+<% @user.venues.each do |ven| %>
   <li><strong>Venue:</strong> <%= ven.name %> <strong>Locale:</strong> <%= ven.city %><br />
   <a href="/venues/<%=ven.id%>/performers">Performers</a>
   <a href="/venues/<%=ven.id%>/edit">Edit</a>
