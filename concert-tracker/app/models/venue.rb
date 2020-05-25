@@ -3,9 +3,9 @@ class Venue < ActiveRecord::Base
   has_many :performer_venues
   has_many :performers, through: :performer_venues
   
-  def self.performers
-    @performers = []
-  end
+#  def self.performers
+#    @performers = []
+#  end
   
   def self.valid_params?(params)
     return !params[:name].blank? && !params[:city].blank?

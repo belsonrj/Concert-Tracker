@@ -40,14 +40,37 @@ class VenuesController < ApplicationController
     erb :'venues/performers'
   end
   
-  post '/venues/:id' do
+  get "/venues/:id/add" do
+    @user = current_user
     @venues = Venue.find(params[:id])
-    @venues.update(params[:venue])
-#    @venues.update(params.select{|k|k=="name" || k=="city"})
+    erb :'venues/new_performers'
+  end
+  
+#  post "venues/:id/add"
+#    @venues = Venue.find(params[:id])
+#    if !params["performer"]["name"].empty?
+#      @venues.performers << Performer.create(name: params["performer"]["name"], genre: params["performer"]["genre"])
+#    end
+
+#    else
+#      @venues.performers << 
+#    end
+#    @venues.save
+#    redirect to "venues/#{@venues.id}"
+#  end
+  
+  patch '/venues/:id' do
+    @user = current_user
+    @venues = Venue.find(params[:id])
+#    @venues.update(params[:venue])
+    @new_performer = Performer.create(name: params["performer"]["name"], genre: params["performer"]["genre"])
+
     if !params["performer"]["name"].empty?
-      @venues.performers << Performer.create(name: params["performer"]["name"], genre: params["performer"]["genre"])
+      @venues.performers << @new_performer
+      @user.performers << @new_performer
     end
     
+    @venues.update(params[:venue])
     @venues.save
     
     redirect to "venues/#{@venues.id}"
@@ -61,11 +84,13 @@ class VenuesController < ApplicationController
   post "/venues" do
     @user = current_user
     @venues = Venue.create(params[:venue])
+    @new_performer = Performer.create(name: params["performer"]["name"], genre: params["performer"]["genre"])
     if !params["performer"]["name"].empty?
-      @venues.performers << Performer.create(name: params["performer"]["name"], genre: params["performer"]["genre"])
+      @venues.performers << @new_performer
+      @user.performers << @new_performer
     end
     @user.venues << @venues  
-    @venues.save
+#    @venues.save
 
     redirect "/venues/index"
   end
@@ -81,4 +106,4 @@ class VenuesController < ApplicationController
     @venues = Venue.delete(params[:id])
     redirect "/venues/index"
   end
-end
+end 
