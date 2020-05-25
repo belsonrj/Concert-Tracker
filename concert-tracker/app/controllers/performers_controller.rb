@@ -72,8 +72,10 @@ class PerformersController < ApplicationController
   post "/performers" do
     @user = current_user
     @performers = Performer.create(params[:performer])
+    @new_venue = Venue.create(name: params["venue"]["name"], city: params["venue"]["city"])
     if !params["venue"]["name"].empty?
-      @performers.venues << Venue.create(name: params["venue"]["name"], city: params["venue"]["city"])
+      @performers.venues << @new_venue
+      @user.venues << @new_venue
     end
     @user.performers << @performers  
     @performers.save
