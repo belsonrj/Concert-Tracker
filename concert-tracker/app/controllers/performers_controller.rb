@@ -52,10 +52,11 @@ class PerformersController < ApplicationController
     @user = current_user
     @performers = Performer.find(params[:id])
     @performers.update(params[:performer])
-
+    @new_venue = Venue.create(name: params["venue"]["name"], city: params["venue"]["city"])
+  
     if !params["venue"]["name"].empty?
-      @performers.venues << Venue.create(name: params["venue"]["name"], city: params["venue"]["city"])
-#      @user.performers.venues << @performers
+      @performers.venues << @new_venue
+      @user.venues << @new_venue
     end
     
     @performers.save

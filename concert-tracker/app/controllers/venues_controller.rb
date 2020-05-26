@@ -62,7 +62,6 @@ class VenuesController < ApplicationController
   patch '/venues/:id' do
     @user = current_user
     @venues = Venue.find(params[:id])
-#    @venues.update(params[:venue])
     @new_performer = Performer.create(name: params["performer"]["name"], genre: params["performer"]["genre"])
 
     if !params["performer"]["name"].empty?
