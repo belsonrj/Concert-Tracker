@@ -1,4 +1,4 @@
-Concert-Tracker
+Concert-Tracker:
 A fun interactive way to keep track of all live shows you've attended.
 Keep a comprehensive list of: 
   1. performers you've seen
@@ -9,9 +9,27 @@ Keep a comprehensive list of:
   5. locale of each venue
   5. performers you've seen at each venue
 
-To install 
+Getting Started:
+git clone 
+git@github.com:belsonrj/Concert-Tracker.git
+
+
+Installation Instructions:
   1. access cd ./Concert-Tracker
   2. access cd ./concert-tracker
   3. run 'bundle install'
   4. run 'rackup'
 
+Built With:
+Corneal
+Sinatra
+ActiveRecord
+
+Authors:
+Rick Belson 
+
+License:
+This project is licensed under the MIT License
+
+Acknowledgments:
+Corneal for Application structure
