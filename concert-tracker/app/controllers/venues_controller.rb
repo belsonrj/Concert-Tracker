@@ -81,7 +81,7 @@ class VenuesController < ApplicationController
       @user.performers << @new_performer
     end
     @user.venues << @venues  
-#    @venues.save
+    @venues.save
 
     redirect "/venues/index"
   end

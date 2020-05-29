@@ -2,7 +2,8 @@
 <body style="background-color:rgb(47, 79, 79);">
   <h1>Edit <%= @venues.name %></h1>
 
-  <form action="/venues/<%=@venues.id%>" method="PATCH">
+  <form action="/venues/<%=@venues.id%>" method="patch">
+    
     <label> Venue Name </label>
     <input type="text" name="venue[name]" value="<%=@venues.name %>"> </br>
 
