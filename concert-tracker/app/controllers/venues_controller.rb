@@ -66,6 +66,10 @@ class VenuesController < ApplicationController
   end
   
   post "/venues" do
+    if params["name"].nil? || params["name"].empty?
+      halt 404, erb(:'venues/error')
+    end
+    
     @user = current_user
     @venues = Venue.create(params[:venue])
     @new_performer = Performer.create(name: params["performer"]["name"], genre: params["performer"]["genre"])

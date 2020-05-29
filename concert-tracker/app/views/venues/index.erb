@@ -2,7 +2,6 @@
   <link rel="stylesheet" href="https://www.w3schools.com/html/styles.css">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT3moY0_6nsitNV3NIk0XsSPVicpKfwdkVG87opOL30__dL8PaK&usqp=CAU" height="200" width="800" />
 </head>
-<% if Helpers.is_logged_in?(session) %>
 
 <body style="background-color:rgb(47, 79, 79);">
 <h1>Your List of Venues Visited</h1>
@@ -37,6 +36,4 @@ strong {
   <br />
 <% end %>
 </body>
-  <% else %>
-    You Must <a href="/">Log In</a> to Do This
   <% end %>
