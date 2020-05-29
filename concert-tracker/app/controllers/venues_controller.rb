@@ -1,4 +1,5 @@
 class VenuesController < ApplicationController
+  set :method_override, true
   
   def delete_performer_venue_association(performer_id, venue_id)
     venue = Venue.find(venue_id)
@@ -62,6 +63,8 @@ class VenuesController < ApplicationController
 
   get "/venues/:id" do
     @venues = Venue.find(params[:id])
+    @venues.update(params[:venue])
+    @venues.save
     redirect "/venues/index"
   end
   
