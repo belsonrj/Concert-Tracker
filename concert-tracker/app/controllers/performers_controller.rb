@@ -76,6 +76,10 @@ class PerformersController < ApplicationController
   
   
   post "/performers" do
+    if params["name"].nil? || params["name"].empty?
+      halt 404, erb(:'performers/error')
+    end
+    
     @user = current_user
     @performers = Performer.create(params[:performer])
     @new_venue = Venue.create(name: params["venue"]["name"], city: params["venue"]["city"])
