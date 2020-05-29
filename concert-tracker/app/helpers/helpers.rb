@@ -7,10 +7,14 @@ class Helpers
     !!session_hash[:user_id]
   end
   
-  def redirect_if_not_logged_in
+  def self.redirect_if_not_logged_in
     if !logged_in?
       redirect "/login?error=You have to be logged in to do that"
     end
+  end
+  
+  def self.owner?(object)
+    current_user == object.user
   end
 
   def logged_in?

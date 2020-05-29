@@ -32,32 +32,17 @@ class VenuesController < ApplicationController
     @user = current_user
     @venues = Venue.find(params[:id])
     @performers = Performer.all
-    erb :'/venues/edit'
+    if current_user.id == @venues.user.id
+      erb :'/venues/edit'
+    else
+      redirect '/venues/index'
+    end
   end
   
   get '/venues/:id/performers' do
     @venues = Venue.find(params[:id])
     erb :'venues/performers'
   end
-  
-  get "/venues/:id/add" do
-    @user = current_user
-    @venues = Venue.find(params[:id])
-    erb :'venues/new_performers'
-  end
-  
-#  post "venues/:id/add"
-#    @venues = Venue.find(params[:id])
-#    if !params["performer"]["name"].empty?
-#      @venues.performers << Performer.create(name: params["performer"]["name"], genre: params["performer"]["genre"])
-#    end
-
-#    else
-#      @venues.performers << 
-#    end
-#    @venues.save
-#    redirect to "venues/#{@venues.id}"
-#  end
   
   patch '/venues/:id' do
     @user = current_user
@@ -72,7 +57,7 @@ class VenuesController < ApplicationController
     @venues.update(params[:venue])
     @venues.save
     
-    redirect to "venues/#{@venues.id}"
+    redirect to "venues/:id"
   end
 
   get "/venues/:id" do

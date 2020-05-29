@@ -40,6 +40,11 @@ class PerformersController < ApplicationController
     @venues = Venue.all
     @error_message = params[:error]
     @performers = Performer.find(params[:id])
+    if current_user.id == @performers.user.id
+      erb :'/performers/edit'
+    else
+      redirect '/performers/index'
+    end
     erb :'performers/edit'
   end
   
@@ -60,7 +65,7 @@ class PerformersController < ApplicationController
     end
     
     @performers.save
-    redirect "/performers/#{@performers.id}"
+    redirect "/performers/index"
   end
 
   get "/performers/:id" do

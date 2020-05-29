@@ -3,28 +3,6 @@ class UsersController < ApplicationController
   def logged_in?
     !!session[:user_id]
   end
-  
-#  get '/user/:id' do
-#    if !logged_in?
-#      redirect '/index'
-#    end
-
-#    @user = User.find(params[:id])
-#    if !@user.nil? && @user == current_user
-#      erb :'user/account'
-#    else
-#      redirect '/index'
-#    end
-#  end
-  
-#  get '/login' do 
-#    @error_message = params[:error]
-#    if !session[:user_id]
-#      erb :'user/login'
-#    else
-#      redirect '/login'
-#    end
-#  end
 
   post '/login' do
     user = User.find_by(:username => params[:username])
